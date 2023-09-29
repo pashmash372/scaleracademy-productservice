@@ -3,7 +3,6 @@ package dev.pashmash.productservice.services;
 import dev.pashmash.productservice.dtos.FakeStoreProductDto;
 import dev.pashmash.productservice.dtos.GenericProductDto;
 import dev.pashmash.productservice.exceptions.NotFoundException;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +27,8 @@ public class FakeStoreProductService implements ProductService {
         this.restTemplateBuilder = restTemplateBuilder;
     }
 
-    private static GenericProductDto convertFakeStoreProductDtoToGenericProductDto( FakeStoreProductDto fakeStoreProductDto) {
-        return GenericProductDto.builder()
-                .id(fakeStoreProductDto.getId())
-                .title(fakeStoreProductDto.getTitle())
-                .price(fakeStoreProductDto.getPrice())
-                .category(fakeStoreProductDto.getCategory())
-                .description(fakeStoreProductDto.getDescription())
-                .image(fakeStoreProductDto.getImage()).build();
+    private static GenericProductDto convertFakeStoreProductDtoToGenericProductDto(FakeStoreProductDto fakeStoreProductDto) {
+        return GenericProductDto.builder().id(fakeStoreProductDto.getId()).title(fakeStoreProductDto.getTitle()).price(fakeStoreProductDto.getPrice()).category(fakeStoreProductDto.getCategory()).description(fakeStoreProductDto.getDescription()).image(fakeStoreProductDto.getImage()).build();
     }
 
     @Override
@@ -54,7 +47,7 @@ public class FakeStoreProductService implements ProductService {
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<FakeStoreProductDto> response = restTemplate.getForEntity(specificProductRequestUrl, FakeStoreProductDto.class, id);
         FakeStoreProductDto fakeStoreProductDto = response.getBody();
-        if(fakeStoreProductDto == null){
+        if (fakeStoreProductDto == null) {
             throw new NotFoundException("Product with id " + id + " not found");
         }
         return convertFakeStoreProductDtoToGenericProductDto(fakeStoreProductDto);

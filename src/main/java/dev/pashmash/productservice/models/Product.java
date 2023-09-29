@@ -2,7 +2,9 @@ package dev.pashmash.productservice.models;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @Data
 public class Product extends  BaseModel{

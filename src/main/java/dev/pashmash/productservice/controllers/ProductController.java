@@ -4,7 +4,6 @@ import dev.pashmash.productservice.dtos.GenericProductDto;
 import dev.pashmash.productservice.exceptions.NotFoundException;
 import dev.pashmash.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +16,6 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-
-    @Value("${productservice.type}")
-    private String className;
 
     public ProductController(@Qualifier("fakeStoreProductService") ProductService productService) {
         this.productService = productService;
