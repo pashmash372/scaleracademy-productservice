@@ -1,16 +1,23 @@
 package dev.pashmash.productservice.models;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import lombok.*;
 
-@EqualsAndHashCode(callSuper = true)
-@Builder
-@Data
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product extends  BaseModel{
     private String title;
     private String description;
     private String image;
+    //            P : C
+    // => L to R: 1 : 1
+    // => R to L: m : 1
+    // => Ans:    m : 1
+    @ManyToOne
     private Category category;
     private Double price;
 }

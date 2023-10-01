@@ -1,12 +1,13 @@
 package dev.pashmash.productservice.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.Entity;
+import lombok.*;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@Entity
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Category extends BaseModel{
     private String name;
 }
