@@ -1,7 +1,6 @@
 package dev.pashmash.productservice.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
