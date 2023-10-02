@@ -11,8 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Optional;
-import java.util.UUID;
 
 @SpringBootApplication
 public class ProductserviceApplication implements CommandLineRunner {
@@ -52,7 +50,7 @@ public class ProductserviceApplication implements CommandLineRunner {
 
         Category category = new Category();
         category.setName("Apple Devices");
-        Category savedCategory  = categoryRepository.save(category);
+        categoryRepository.save(category);
 
         Product product = new Product();
         product.setTitle("iPhone 15 Pro");
@@ -61,11 +59,11 @@ public class ProductserviceApplication implements CommandLineRunner {
 
         productRepository.save(product);
 
-        Optional<Category> category1 = categoryRepository.findById(UUID.fromString("d68a882f-dd0c-4596-bbf0-8cfcc0170a27"));
-        System.out.println("Category name is: "+category1.get().getName());
-
-        System.out.println("Printing all products in the category");
-        category1.get().getProducts().forEach(System.out::println);
+//        Optional<Category> category1 = categoryRepository.findById(UUID.fromString("d68a882f-dd0c-4596-bbf0-8cfcc0170a27"));
+//        System.out.println("Category name is: "+category1.get().getName());
+//
+//        System.out.println("Printing all products in the category");
+//        category1.get().getProducts().forEach(System.out::println);
 
 
     }
