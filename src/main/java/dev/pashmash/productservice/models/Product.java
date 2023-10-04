@@ -1,7 +1,9 @@
 package dev.pashmash.productservice.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 
 @Entity
@@ -15,8 +17,8 @@ public class Product extends  BaseModel{
     private String image;
     @ManyToOne
     private Category category;
-//    @OneToOne
-//    private Price price;
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Price price;
 }
 
 //            P : C

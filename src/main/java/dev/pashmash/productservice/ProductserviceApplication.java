@@ -3,13 +3,17 @@ package dev.pashmash.productservice;
 import dev.pashmash.productservice.inheritancedemo.joinedtable.MentorRepository;
 import dev.pashmash.productservice.inheritancedemo.joinedtable.UserRepository;
 import dev.pashmash.productservice.models.Category;
+import dev.pashmash.productservice.models.Price;
 import dev.pashmash.productservice.models.Product;
 import dev.pashmash.productservice.repositories.CategoryRepository;
+import dev.pashmash.productservice.repositories.PriceRepository;
 import dev.pashmash.productservice.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
 
 
 @SpringBootApplication
@@ -19,14 +23,17 @@ public class ProductserviceApplication implements CommandLineRunner {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final PriceRepository priceRepository;
 
     public ProductserviceApplication(@Qualifier("jt_mr") MentorRepository mentorRepository, @Qualifier("jt_ur") UserRepository userRepository,
                                      ProductRepository productRepository,
-                                     CategoryRepository categoryRepository) {
+                                     CategoryRepository categoryRepository,
+                                     PriceRepository priceRepository) {
         this.mentorRepository = mentorRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
+        this.priceRepository = priceRepository;
     }
 
     public static void main(String[] args) {
@@ -52,12 +59,18 @@ public class ProductserviceApplication implements CommandLineRunner {
         category.setName("Apple Devices");
         categoryRepository.save(category);
 
+        Price price = new Price("INR", 100000.00);
+//        priceRepository.save(price);
+
         Product product = new Product();
         product.setTitle("iPhone 15 Pro");
         product.setDescription("The best iPhone Ever");
         product.setCategory(category);
+        product.setPrice(price);
 
         productRepository.save(product);
+
+        List<Product> inr = productRepository.findAllByPrice_Currency("INR");
 
 //        Optional<Category> category1 = categoryRepository.findById(UUID.fromString("d68a882f-dd0c-4596-bbf0-8cfcc0170a27"));
 //        System.out.println("Category name is: "+category1.get().getName());
