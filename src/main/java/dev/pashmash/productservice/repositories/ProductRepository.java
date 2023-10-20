@@ -16,6 +16,8 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     List<Product> findAllByPrice_Currency(String currency);
 
-    @Query("select Product  from Product  where Product .category.uuid in :uuids")
-    List<Product> findAllByCategoryIn(List<UUID> uuids);
+    List<Product> findAllByTitle(String s);
+
+//    @Query("select Product  from Product  where Product .category.uuid in :uuids")
+//    List<Product> findAllByCategoryIn(List<UUID> uuids);
 }
