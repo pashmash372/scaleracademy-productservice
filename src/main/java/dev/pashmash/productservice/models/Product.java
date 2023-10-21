@@ -19,6 +19,7 @@ public class Product extends  BaseModel{
     private Category category;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Price price;
+    private int inventoryCount;
 }
 
 //            P : C

@@ -17,3 +17,7 @@ now with subselect 2 db call happened  ==> SUBQUERY
 ![img_3.png](img_3.png)
 
 THIS IS N+1 problem
+
+username password setting in mysql
+
+![img_4.png](img_4.png)

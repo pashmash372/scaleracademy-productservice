@@ -15,6 +15,8 @@
     <description>productservice</description>
     <properties>
         <java.version>17</java.version>
+        <annotations.version>24.0.1</annotations.version>
+        <flyway-mysql.version>9.22.2</flyway-mysql.version>
     </properties>
     <dependencies>
         <dependency>
@@ -56,7 +58,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>24.0.1</version>
+            <version>${annotations.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
@@ -73,7 +75,7 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
-            <version>9.22.2</version>
+            <version>${flyway-mysql.version}</version>
         </dependency>
     </dependencies>
 
