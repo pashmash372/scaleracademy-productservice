@@ -3,11 +3,11 @@ package dev.pashmash.productservice.controllers;
 import dev.pashmash.productservice.dtos.GenericProductDto;
 import dev.pashmash.productservice.exceptions.NotFoundException;
 import dev.pashmash.productservice.services.ProductService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,13 +17,15 @@ public class ProductController {
 
     private final ProductService productService;
 
-    public ProductController(@Qualifier("fakeStoreProductService") ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
 
     @GetMapping("/{id}")
     public GenericProductDto getProductById(@PathVariable Long id) throws NotFoundException {
+        if (productService.getProductById(id) == null)
+            throw new NotFoundException("Product with id " + id + " not found");
         return productService.getProductById(id);
     }
 
@@ -34,8 +36,28 @@ public class ProductController {
 
     // GET /products {}
     @GetMapping
-    public List<GenericProductDto> getAllProducts() {
-        return productService.getProducts();
+    public ResponseEntity<List<GenericProductDto>> getAllProducts() {
+        List<GenericProductDto> productDtos = productService.getAllProducts();
+        if (productDtos.isEmpty()) {
+            return new ResponseEntity<>(
+                    productDtos,
+                    HttpStatus.NOT_FOUND
+            );
+        }
+
+        List<GenericProductDto> genericProductDtos = new ArrayList<>();
+
+        for (GenericProductDto gpd: productDtos) {
+            genericProductDtos.add(gpd);
+        };
+
+//        genericProductDtos.remove(genericProductDtos.get(0));
+
+        return new ResponseEntity<>(genericProductDtos, HttpStatus.OK);
+
+//        productDtos.get(0).setId(1001L);
+//
+//        return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -21,3 +21,8 @@ THIS IS N+1 problem
 username password setting in mysql
 
 ![img_4.png](img_4.png)
+-------------------------------------
+
+imp notes
+this is bad idea use something like hamcrest here
+![img_5.png](img_5.png)

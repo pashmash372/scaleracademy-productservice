@@ -13,19 +13,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ProductserviceApplication {//implements CommandLineRunner {
 
-    private final MentorRepository mentorRepository;
-    private final UserRepository userRepository;
-    private final ProductRepository productRepository;
-    private final CategoryRepository categoryRepository;
-    private final PriceRepository priceRepository;
+//    private final MentorRepository mentorRepository;
+//    private final UserRepository userRepository;
+//    private final ProductRepository productRepository;
+//    private final CategoryRepository categoryRepository;
+//    private final PriceRepository priceRepository;
 
-    public ProductserviceApplication(@Qualifier("jt_mr") MentorRepository mentorRepository, @Qualifier("jt_ur") UserRepository userRepository, ProductRepository productRepository, CategoryRepository categoryRepository, PriceRepository priceRepository) {
-        this.mentorRepository = mentorRepository;
-        this.userRepository = userRepository;
-        this.productRepository = productRepository;
-        this.categoryRepository = categoryRepository;
-        this.priceRepository = priceRepository;
-    }
+//    public ProductserviceApplication(@Qualifier("jt_mr") MentorRepository mentorRepository, @Qualifier("jt_ur") UserRepository userRepository, ProductRepository productRepository, CategoryRepository categoryRepository, PriceRepository priceRepository) {
+//        this.mentorRepository = mentorRepository;
+//        this.userRepository = userRepository;
+//        this.productRepository = productRepository;
+//        this.categoryRepository = categoryRepository;
+//        this.priceRepository = priceRepository;
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(ProductserviceApplication.class, args);

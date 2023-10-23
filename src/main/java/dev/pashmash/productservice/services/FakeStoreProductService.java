@@ -33,7 +33,7 @@ public class FakeStoreProductService implements ProductService {
     }
 
     @Override
-    public List<GenericProductDto> getProducts() {
+    public List<GenericProductDto> getAllProducts() {
         return fakeStoreProductServiceClient.getProducts().stream().map(FakeStoreProductService::convertFakeStoreProductDtoToGenericProductDto).toList();
     }
 
