@@ -26,3 +26,12 @@ username password setting in mysql
 imp notes
 this is bad idea use something like hamcrest here
 ![img_5.png](img_5.png)
+
+
+-----------------------------------------
+
+Day 278 - BE: Authentication - 1 (JWTs, OAuth, Auth v/s Auth)
+
+nothing done
+
+--------------------------------------------------
